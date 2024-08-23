@@ -1,0 +1,53 @@
+{
+  "FIRE_SEPARATION_DISTANCE": [
+    {
+      "range": "< 5",
+      "TYPE_OF_CONSTRUCTION": "All",
+      "OCCUPANCY_GROUP_H": 3,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 2,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+    },
+    {
+      "range": "5 <= X < 10",
+      "TYPE_OF_CONSTRUCTION": "IA",
+      "OCCUPANCY_GROUP_H": 3,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 2,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+    },
+    {
+      "range": "5 <= X < 10",
+      "TYPE_OF_CONSTRUCTION": "Others",
+      "OCCUPANCY_GROUP_H": 2,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+    },
+    {
+      "range": "10 <= X < 30",
+      "TYPE_OF_CONSTRUCTION": "IA, IB",
+      "OCCUPANCY_GROUP_H": 2,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+    },
+    {
+      "range": "10 <= X < 30",
+      "TYPE_OF_CONSTRUCTION": "IIB, VB",
+      "OCCUPANCY_GROUP_H": 1,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 0,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 0
+    },
+    {
+      "range": "10 <= X < 30",
+      "TYPE_OF_CONSTRUCTION": "Others",
+      "OCCUPANCY_GROUP_H": 1,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+    },
+    {
+      "range": "<= 30",
+      "TYPE_OF_CONSTRUCTION": "All",
+      "OCCUPANCY_GROUP_H": 0,
+      "OCCUPANCY_GROUP_F-1_M_S-1": 0,
+      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 0
+    }
+  ]
+}
