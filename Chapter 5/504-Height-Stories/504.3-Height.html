@@ -1,18 +1,1167 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-<title>Notebook</title>
-<link href="" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<header>
+None<header>
 <nav>
 <ul>
 </ul>
 </nav>
-</header>
+</header><main>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Section-504.3---Height-in-feet">Section 504.3 - Height in feet<a class="anchor-link" href="#Section-504.3---Height-in-feet">¶</a></h1><h2 id="Building-Code">Building Code<a class="anchor-link" href="#Building-Code">¶</a></h2><p>The maximum height, in feet, of a building shall not exceed the limits specified in Table 504.3.</p>
+<p><strong>Exception</strong>: Towers, spires, steeples and other roof structures shall be constructed of materials consistent with the required type of construction of the building except where other construction is permitted by Section 1510.2.5. Such structures shall not be used for habitation or storage. The structures shall be unlimited in height where of noncombustible materials and shall not extend more than 20 feet (6096 mm) above the allowable building height where of combustible materials (see Chapter 15 for additional requirements).</p>
+<h3 id="TABLE-504.3a-ALLOWABLE-BUILDING-HEIGHT-IN-FEET-ABOVE-GRADE-PLANE">TABLE 504.3a ALLOWABLE BUILDING HEIGHT IN FEET ABOVE GRADE PLANE<a class="anchor-link" href="#TABLE-504.3a-ALLOWABLE-BUILDING-HEIGHT-IN-FEET-ABOVE-GRADE-PLANE">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Add the path to the Rule Notebooks folder to the system path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">'../..'</span><span class="p">))</span>
+
+<span class="c1"># Import the find_value function from table_lookup.py</span>
+<span class="kn">from</span> <span class="nn">ruleFunctions</span> <span class="kn">import</span> <span class="n">find_value</span><span class="p">,</span> <span class="n">check_value</span><span class="p">,</span> <span class="n">get_building_info</span><span class="p">,</span> <span class="n">create_scrollable_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Load the table from the JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'table_504_3.json'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">table_504_3</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">create_scrollable_table</span><span class="p">(</span><span class="n">table_504_3</span><span class="p">,</span> <span class="n">limit_column_name</span><span class="o">=</span><span class="s2">"Height Limit"</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div style="max-height: 400px; overflow-y: scroll;">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>Occupancy Group</th>
+<th>Sprinkler System</th>
+<th>Construction Type</th>
+<th>Subtype</th>
+<th>Height Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>85</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>70</td>
+</tr>
+<tr>
+<td>A, A-2, A-3, B, E, F, M, S, U</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>H-1, H-2, H-3, H-5</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>85</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>70</td>
+</tr>
+<tr>
+<td>H-4</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>70</td>
+</tr>
+<tr>
+<td>I-1 Condition 1, I-3</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>I-1 Condition 2, I-2</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>85</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>70</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>160</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>65</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>55</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>65</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>50</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>B</td>
+<td>40</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type I</td>
+<td>A</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type I</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type II</td>
+<td>A</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type II</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type III</td>
+<td>A</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type III</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type V</td>
+<td>A</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S13R</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type I</td>
+<td>B</td>
+<td>180</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type II</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type II</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type III</td>
+<td>A</td>
+<td>85</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type III</td>
+<td>B</td>
+<td>75</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>85</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type V</td>
+<td>A</td>
+<td>70</td>
+</tr>
+<tr>
+<td>R, R-1</td>
+<td>S</td>
+<td>Type V</td>
+<td>B</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>For SI: 1 foot = 304.8 mm.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>UL = Unlimited</li>
+<li>NS = Buildings not equipped throughout with an automatic sprinkler system</li>
+<li>S = Buildings equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.1</li>
+<li>S13R = Buildings equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.2</li>
+</ul>
+<p>a. See Chapters 4 and 5 for specific exceptions to the allowable height in this chapter.</p>
+<p>b. See Section 903.2 for the minimum thresholds for protection by an automatic sprinkler system for specific occupancies.</p>
+<p>c. New Group H occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.5.</p>
+<p>d. The NS value is only for use in evaluation of existing building height in accordance with the International Existing Building Code.</p>
+<p>e. New Group I-1 and I-3 occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.6. For new Group I-1 occupancies Condition 1, see Exception 1 of Section 903.2.6.</p>
+<p>f. New and existing Group I-2 occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.6 and Section 1103.5 of the International Fire Code.</p>
+<p>g. For new Group I-4 occupancies, see Exceptions 2 and 3 of Section 903.2.6.</p>
+<p>h. New Group R occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.8.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define the SPARQL endpoint URL and query file path</span>
+<span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">"http://localhost:3030/SmartReviewHotel/sparql"</span>
+
+<span class="c1"># Call the function to get the building information</span>
+<span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">sprinkler_type</span><span class="p">,</span> <span class="n">storey_num</span> <span class="o">=</span> <span class="n">get_building_info</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
+
+
+<span class="c1">#print(main_construction_type, subtype, occupancy_group, sprinkler_system, sprinkler_type, storey_num)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Type V A R-1 S 13 4
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">building_height</span> <span class="o">=</span> <span class="mf">57.33</span> <span class="c1">#hardcoded value for now</span>
+<span class="n">allowed_building_height</span> <span class="o">=</span> <span class="n">find_value</span><span class="p">(</span><span class="n">table_504_3</span><span class="p">,</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span><span class="p">)</span>
+<span class="n">building_height_result</span> <span class="o">=</span> <span class="n">check_value</span><span class="p">(</span><span class="n">building_height</span><span class="p">,</span> <span class="n">allowed_building_height</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: </span><span class="si">{</span><span class="n">building_height_result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">building_height_result</span> <span class="o">==</span> <span class="s2">"Passed"</span><span class="p">:</span>
+    <span class="n">passed5043</span> <span class="o">=</span> <span class="s2">"does not"</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">passed5043</span> <span class="o">=</span> <span class="s2">"does"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">The building height of </span><span class="si">{</span><span class="n">building_height</span><span class="si">}</span><span class="s2"> ft </span><span class="si">{</span><span class="n">passed5043</span><span class="si">}</span><span class="s2"> exceed the limit of </span><span class="si">{</span><span class="n">allowed_building_height</span><span class="si">}</span><span class="s2"> ft as specified in Table 504.3 for:</span><span class="se">\n</span><span class="s2">"</span> \
+                             <span class="sa">f</span><span class="s2">"• Occupancy - </span><span class="si">{</span><span class="n">occupancy_group</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
+                             <span class="sa">f</span><span class="s2">"• Construction Type - </span><span class="si">{</span><span class="n">main_construction_type</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
+                             <span class="sa">f</span><span class="s2">"• Subtype - </span><span class="si">{</span><span class="n">subtype</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
+                             <span class="sa">f</span><span class="s2">"• Sprinkler System - </span><span class="si">{</span><span class="n">sprinkler_type</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>This section is considered: Passed
+
+The building height of 57.33 ft does not exceed the limit of 70 ft as specified in Table 504.3 for:
+• Occupancy - R-1,
+• Construction Type - Type V,
+• Subtype - A,
+• Sprinkler System - 13.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The Exception allowing for increased heights for towers, spires, steeples, and other roof structures has not been implemented. Please verify this exception manually.</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
-</html>
+</main>
+

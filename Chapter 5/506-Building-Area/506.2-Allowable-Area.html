@@ -1,18 +1,3103 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-<title>Notebook</title>
-<link href="" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<header>
+None<header>
 <nav>
 <ul>
 </ul>
 </nav>
-</header>
+</header><main>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Section-506.2---Allowable-area-determination">Section 506.2 - Allowable area determination<a class="anchor-link" href="#Section-506.2---Allowable-area-determination">¶</a></h1><h2 id="Building-Code">Building Code<a class="anchor-link" href="#Building-Code">¶</a></h2><p>The allowable area of a building shall be determined in accordance with the applicable provisions of Sections 506.2.1 through 506.2.4 and Section 506.3.</p>
+<h3 id="TABLE-506.2a,-b-ALLOWABLE-AREA-FACTOR-(At-=-NS,-S1,-S13R,-or-SM,-as-applicable)-IN-SQUARE-FEET">TABLE 506.2a, b ALLOWABLE AREA FACTOR (At = NS, S1, S13R, or SM, as applicable) IN SQUARE FEET<a class="anchor-link" href="#TABLE-506.2a,-b-ALLOWABLE-AREA-FACTOR-(At-=-NS,-S1,-S13R,-or-SM,-as-applicable)-IN-SQUARE-FEET">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Add the path to the Rule Notebooks folder to the system path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">'../..'</span><span class="p">))</span>
+
+<span class="c1"># Import the find_value function from table_lookup.py</span>
+<span class="kn">from</span> <span class="nn">ruleFunctions</span> <span class="kn">import</span> <span class="n">find_value</span><span class="p">,</span> <span class="n">check_value</span><span class="p">,</span> <span class="n">get_building_info</span><span class="p">,</span> <span class="n">create_scrollable_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span> 
+
+<span class="c1"># Load the table from the JSON file </span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'table_506_2.json'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">table_506_2</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">create_scrollable_table</span><span class="p">(</span><span class="n">table_506_2</span><span class="p">,</span> <span class="n">limit_column_name</span><span class="o">=</span><span class="s2">"Area Limit"</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div style="max-height: 400px; overflow-y: scroll;">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>Occupancy Group</th>
+<th>Sprinkler System</th>
+<th>Construction Type</th>
+<th>Subtype</th>
+<th>Area Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>15500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>11500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>5500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>5500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>62000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>34000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>34000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>46000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>22000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>22000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>46500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>34500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>16500</td>
+</tr>
+<tr>
+<td>A-1</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>16500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>15500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>11500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>62000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>46000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>46500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>34500</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-2</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>15500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>11500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>62000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>46000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>46500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>34500</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-3</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>15500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>11500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>62000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>38000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>46000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>46500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>34500</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-4</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>A-5</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>37500</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>23000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>28500</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>19000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>150000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>92000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>114000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>76000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>144000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>112500</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>69000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>85500</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>57000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>108000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>54000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>55000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>19000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>16500</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>10500</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>4500</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>220000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>76000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>66000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>165000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>57000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>49500</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>54000</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>HT</td>
+<td>31500</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>13500</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>11000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>NP</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>44000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>NP</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>33000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>NP</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>10500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>7500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>7500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>31500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>22500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>22500</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>60500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>26500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>13000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>23500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>13000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>18500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>121000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>106000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>52000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>94000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>52000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>102000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>74000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>181500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>79500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>39000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>70500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>39000</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>76500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>55500</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>21500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>12500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>18500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>86000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>50000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>74000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>64500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>37500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>55500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>M</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>20500</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>82000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>61500</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>R-1</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>20500</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>82000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>61500</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>UL</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>24000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>20500</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>96000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>64000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>82000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>61500</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>48000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>17500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>17500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>192000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>104000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>70000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>104000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>70000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>102000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>144000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>78000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>52500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>78000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>52500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>76500</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>79000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>39000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>39000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>38500</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>13500</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>316000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>156000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>104000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>156000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>104000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>154000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>84000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>54000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>237000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>117000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>78000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>117000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>78000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>115500</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>63000</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>40500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type I</td>
+<td>A</td>
+<td>35500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type I</td>
+<td>B</td>
+<td>19000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type II</td>
+<td>A</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type II</td>
+<td>B</td>
+<td>14000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type III</td>
+<td>A</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type III</td>
+<td>B</td>
+<td>18000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type IV</td>
+<td>A</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>NS</td>
+<td>Type V</td>
+<td>A</td>
+<td>5500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type I</td>
+<td>A</td>
+<td>142000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type I</td>
+<td>B</td>
+<td>76000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type II</td>
+<td>A</td>
+<td>34000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type II</td>
+<td>B</td>
+<td>56000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type III</td>
+<td>A</td>
+<td>34000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type III</td>
+<td>B</td>
+<td>72000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type IV</td>
+<td>A</td>
+<td>36000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>S1</td>
+<td>Type V</td>
+<td>A</td>
+<td>22000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type I</td>
+<td>A</td>
+<td>106500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type I</td>
+<td>B</td>
+<td>57000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type II</td>
+<td>A</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type II</td>
+<td>B</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type III</td>
+<td>A</td>
+<td>25500</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type III</td>
+<td>B</td>
+<td>54000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type IV</td>
+<td>A</td>
+<td>27000</td>
+</tr>
+<tr>
+<td>U</td>
+<td>SM</td>
+<td>Type V</td>
+<td>A</td>
+<td>16500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Note:</strong> UL = Unlimited; NP = Not permitted;<br/>
+For SI: 1 square foot = 0.0929 m².</p>
+<ul>
+<li><strong>NS</strong> = Buildings not equipped throughout with an automatic sprinkler system</li>
+<li><strong>S1</strong> = Buildings a maximum of one story above grade plane equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.1</li>
+<li><strong>SM</strong> = Buildings two or more stories above grade plane equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.1</li>
+<li><strong>S13R</strong> = Buildings equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.2</li>
+</ul>
+<p><strong>Footnotes:</strong></p>
+<p>a. See Chapters 4 and 5 for specific exceptions to the allowable height in this chapter.<br/>
+b. See Section 903.2 for the minimum thresholds for protection by an automatic sprinkler system for specific occupancies.<br/>
+c. New Group H occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.5.<br/>
+d. The NS value is only for use in evaluation of existing building area in accordance with the International Existing Building Code.<br/>
+e. New Group I-1 and I-3 occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.6. For new Group I-1 occupancies, Condition 1, see Exception 1 of Section 903.2.6.<br/>
+f. New and existing Group I-2 occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.6 and Section 1103.5 of the International Fire Code.<br/>
+g. New Group I-4 occupancies see Exceptions 2 and 3 of Section 903.2.6.<br/>
+h. New Group R occupancies are required to be protected by an automatic sprinkler system in accordance with Section 903.2.8.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">SPARQLWrapper</span> <span class="kn">import</span> <span class="n">SPARQLWrapper</span><span class="p">,</span> <span class="n">JSON</span>
+
+<span class="c1"># Define the SPARQL endpoint URL and query file path</span>
+<span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">"http://localhost:3030/SmartReviewHotel/sparql"</span>
+
+<span class="n">sparql</span> <span class="o">=</span> <span class="n">SPARQLWrapper</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Call the function to get the building information</span>
+<span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">sprinkler_type</span><span class="p">,</span> <span class="n">storey_num</span> <span class="o">=</span> <span class="n">get_building_info</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">sprinkler_type</span><span class="p">,</span> <span class="n">storey_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Type V A R-1 S 13 4
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">sprinkler_system</span> <span class="o">==</span> <span class="s2">"S"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">storey_num</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="n">sprinkler_system</span> <span class="o">=</span> <span class="s2">"SM"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sprinkler_system</span> <span class="o">=</span> <span class="s2">"S1"</span>
+
+<span class="n">allowed_building_height</span> <span class="o">=</span> <span class="n">find_value</span><span class="p">(</span><span class="n">table_506_2</span><span class="p">,</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">allowed_building_height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>21000
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\..\SPARQL</span><span class="se">\\</span><span class="s2">uniqueOccupancy.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># Set the SPARQL query and the return format</span>
+<span class="n">sparql</span><span class="o">.</span><span class="n">setQuery</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
+<span class="n">sparql</span><span class="o">.</span><span class="n">setReturnFormat</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
+
+<span class="c1"># Execute the query and get the results in JSON format</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">sparql</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
+
+<span class="c1"># Print the initial section message</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: Passed"</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">The allowable area of the building was determined in accordance with Section 506.2.4 as there is more than one occupancy in the multi-story building: </span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Process and format the results</span>
+<span class="n">story_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="s2">"bindings"</span><span class="p">]:</span>
+    <span class="n">level_value</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"levelValue"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
+    <span class="n">occupancies</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"uniqueOccupancies"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>  <span class="c1"># Adjusted to the actual key name</span>
+
+    <span class="k">if</span> <span class="n">level_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="p">:</span>
+        <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">occupancies</span><span class="p">)</span>
+
+<span class="c1"># Track the number of unique occupancies</span>
+<span class="n">num_unique_occupancies</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Print the results in the desired format</span>
+<span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">occupancies</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">story_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">unique_occupancies</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">occupancies</span><span class="p">))</span>  <span class="c1"># Remove duplicates and sort for better display</span>
+    <span class="k">if</span> <span class="n">num_unique_occupancies</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_occupancies</span><span class="p">):</span>
+        <span class="n">num_unique_occupancies</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_occupancies</span><span class="p">)</span>  <span class="c1"># Count the number of unique occupancies</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"• Story: </span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">occupancy</span> <span class="ow">in</span> <span class="n">unique_occupancies</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ◾ Occupancy: </span><span class="si">{</span><span class="n">occupancy</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>  <span class="c1"># Add a blank line after each story</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>This section is considered: Passed
+
+The allowable area of the building was determined in accordance with Section 506.2.4 as there is more than one occupancy in the multi-story building: 
+
+• Story: 01
+  ◾ Occupancy: A-2
+  ◾ Occupancy: A-3
+  ◾ Occupancy: B
+  ◾ Occupancy: R-1
+
+• Story: 02
+  ◾ Occupancy: R-1
+
+• Story: 03
+  ◾ Occupancy: R-1
+
+• Story: 04
+  ◾ Occupancy: R-1
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
-</html>
+</main>
+

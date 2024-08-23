@@ -1,18 +1,208 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-<title>Notebook</title>
-<link href="" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<header>
+None<header>
 <nav>
 <ul>
 </ul>
 </nav>
-</header>
+</header><main>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Section-508.3.3---Separation">Section 508.3.3 - Separation<a class="anchor-link" href="#Section-508.3.3---Separation">¶</a></h1><h2 id="Building-Code">Building Code<a class="anchor-link" href="#Building-Code">¶</a></h2><pre><code>No separation is required between nonseparated occupancies. 
+
+Exceptions: 
+
+ 1. Group H-2, H-3, H-4 and H-5 occupancies shall be separated from all other occupancies in accordance with Section 508.4. 
+
+ 2. Group I-1, R-1, R-2 and R-3 dwelling units and sleeping units  shall be separated from other dwelling or sleeping units and from other occupancies contiguous to them in accordance with the requirements of Section 420.
+</code></pre>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">rdflib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Load RDF graph</span>
+<span class="n">rdf_graph</span> <span class="o">=</span> <span class="n">rdflib</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">rdf_graph</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">"..\..\..\LBD files\smartReview\outputHotel Compliant Revit 2023 Advanced with Spaces.ifc.ttl"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"ttl"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;Graph identifier=N6536d51c7ffe4517a3bc59c5bfa90528 (&lt;class 'rdflib.graph.Graph'&gt;)&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\..\SPARQL</span><span class="se">\\</span><span class="s2">uniqueOccupancy.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">results</span> <span class="o">=</span> <span class="n">rdf_graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
+
+<span class="c1"># Process and format the results</span>
+<span class="n">story_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">level_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">occupancies</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">level_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="p">:</span>
+        <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">occupancies</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Print the results in the desired format</span>
+<span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">occupancies</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">story_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">unique_occupancies</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">occupancies</span><span class="p">))</span>  <span class="c1"># Remove duplicates and sort for better display</span>
+    <span class="n">occupancy_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_occupancies</span><span class="p">)</span>
+    
+    <span class="n">contains_exception1</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">o</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"H-2"</span><span class="p">,</span> <span class="s2">"H-3"</span><span class="p">,</span> <span class="s2">"H-4"</span><span class="p">,</span> <span class="s2">"H-5"</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">unique_occupancies</span><span class="p">)</span>
+    <span class="n">contains_exception2</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">o</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"I-1"</span><span class="p">,</span> <span class="s2">"R-1"</span><span class="p">,</span> <span class="s2">"R-2"</span><span class="p">,</span> <span class="s2">"R-3"</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">unique_occupancies</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">occupancy_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">exception1_result</span> <span class="o">=</span> <span class="s2">"Passed"</span>
+        <span class="n">exception2_result</span> <span class="o">=</span> <span class="s2">"Passed"</span>
+        <span class="n">reason</span> <span class="o">=</span> <span class="s2">"The Separation Group only contains one occupancy. There can be no violation of Exception 1 or Exception 2."</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">exception1_result</span> <span class="o">=</span> <span class="s2">"Passed"</span> <span class="k">if</span> <span class="n">contains_exception1</span> <span class="k">else</span> <span class="s2">"Failed"</span>
+        <span class="n">exception2_result</span> <span class="o">=</span> <span class="s2">"Passed"</span> <span class="k">if</span> <span class="n">contains_exception2</span> <span class="k">else</span> <span class="s2">"Failed"</span>
+        
+        <span class="n">reason_parts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">contains_exception1</span><span class="p">:</span>
+            <span class="n">reason_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"The Separation Group does not contain an occupancy described in Exception 1."</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">contains_exception2</span><span class="p">:</span>
+            <span class="n">reason_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"The Separation Group does not contain an occupancy described in Exception 2."</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">reason_parts</span><span class="p">:</span>
+            <span class="n">reason</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reason_parts</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">reason</span> <span class="o">=</span> <span class="s2">"The Separation Group does not contain the required occupancies for Exception 1 or Exception 2."</span>
+        
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">"Separation Group"</span><span class="p">:</span> <span class="n">level</span><span class="p">,</span>
+        <span class="s2">"Occupancies"</span><span class="p">:</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">occupancies</span><span class="p">),</span>
+        <span class="s2">"Exception 1 Result"</span><span class="p">:</span> <span class="n">exception1_result</span><span class="p">,</span>
+        <span class="s2">"Exception 2 Result"</span><span class="p">:</span> <span class="n">exception2_result</span><span class="p">,</span>
+        <span class="s2">"Reason"</span><span class="p">:</span> <span class="n">reason</span>
+    <span class="p">})</span>
+
+<span class="c1"># Create DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display the DataFrame as a scrollable table</span>
+<span class="k">def</span> <span class="nf">render_scrollable_table</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">    &lt;div style="max-height: </span><span class="si">{</span><span class="n">max_height</span><span class="si">}</span><span class="s2">px; overflow-y: scroll;"&gt;</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">dataframe</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">    """</span><span class="p">))</span>
+
+<span class="n">render_scrollable_table</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div style="max-height: 300px; overflow-y: scroll;">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>Separation Group</th>
+<th>Occupancies</th>
+<th>Exception 1 Result</th>
+<th>Exception 2 Result</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>A-3, A-2, R-1, B</td>
+<td>Failed</td>
+<td>Passed</td>
+<td>The Separation Group does not contain an occupancy described in Exception 1.</td>
+</tr>
+<tr>
+<td>02</td>
+<td>R-1</td>
+<td>Passed</td>
+<td>Passed</td>
+<td>The Separation Group only contains one occupancy. There can be no violation of Exception 1 or Exception 2.</td>
+</tr>
+<tr>
+<td>03</td>
+<td>R-1</td>
+<td>Passed</td>
+<td>Passed</td>
+<td>The Separation Group only contains one occupancy. There can be no violation of Exception 1 or Exception 2.</td>
+</tr>
+<tr>
+<td>04</td>
+<td>R-1</td>
+<td>Passed</td>
+<td>Passed</td>
+<td>The Separation Group only contains one occupancy. There can be no violation of Exception 1 or Exception 2.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
-</html>
+</main>
+
