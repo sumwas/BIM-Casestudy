@@ -1,0 +1,87 @@
+[
+    {
+        "fire_separation_distance": "0 to less than 3",
+        "entries": [
+            {
+                "degree_of_opening_protection": "Unprotected, Nonsprinklered (UP, NS)",
+                "allowable_area": "Not Permitted"
+            },
+            {
+                "degree_of_opening_protection": "Unprotected, Sprinklered (UP, S)",
+                "allowable_area": "Not Permitted"
+            },
+            {
+                "degree_of_opening_protection": "Protected (P)",
+                "allowable_area": "Not Permitted"
+            }
+        ]
+    },
+    {
+        "fire_separation_distance": "3 to less than 5",
+        "entries": [
+            {
+                "degree_of_opening_protection": "Unprotected, Nonsprinklered (UP, NS)",
+                "allowable_area": "Not Permitted"
+            },
+            {
+                "degree_of_opening_protection": "Unprotected, Sprinklered (UP, S)",
+                "allowable_area": "15%"
+            },
+            {
+                "degree_of_opening_protection": "Protected (P)",
+                "allowable_area": "15%"
+            }
+        ]
+    },
+    {
+        "fire_separation_distance": "5 to less than 10",
+        "entries": [
+            {
+                "degree_of_opening_protection": "Unprotected, Nonsprinklered (UP, NS)",
+                "allowable_area": "10%"
+            },
+            {
+                "degree_of_opening_protection": "Unprotected, Sprinklered (UP, S)",
+                "allowable_area": "25%"
+            },
+            {
+                "degree_of_opening_protection": "Protected (P)",
+                "allowable_area": "25%"
+            }
+        ]
+    },
+    {
+        "fire_separation_distance": "10 to less than 15",
+        "entries": [
+            {
+                "degree_of_opening_protection": "Unprotected, Nonsprinklered (UP, NS)",
+                "allowable_area": "15%"
+            },
+            {
+                "degree_of_opening_protection": "Unprotected, Sprinklered (UP, S)",
+                "allowable_area": "45%"
+            },
+            {
+                "degree_of_opening_protection": "Protected (P)",
+                "allowable_area": "45%"
+            }
+        ]
+    },
+    {
+        "fire_separation_distance": "15 to less than 20",
+        "entries": [
+            {
+                "degree_of_opening_protection": "Unprotected, Nonsprinklered (UP, NS)",
+                "allowable_area": "25%"
+            },
+            {
+                "degree_of_opening_protection": "Unprotected, Sprinklered (UP, S)",
+                "allowable_area": "75%"
+            },
+            {
+                "degree_of_opening_protection": "Protected (P)",
+                "allowable_area": "75%"
+            }
+        ]
+    }
+]
