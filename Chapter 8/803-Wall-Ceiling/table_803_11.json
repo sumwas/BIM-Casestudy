@@ -1,0 +1,171 @@
+{
+    "A-1 & A-2": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "A-3, A-4, A-5": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "B, E, M, R-1": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "R-4": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "F": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "C",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "H": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "I-1": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "I-2": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "B"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "I-3": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "I-4": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "B"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "A",
+        "corridors_exit_access_stairways_and_ramps": "A",
+        "rooms_and_enclosed_spaces": "B"
+      }
+    },
+    "R-2": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "C",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "R-3": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "C",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "C",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "S": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "C",
+        "corridors_exit_access_stairways_and_ramps": "C",
+        "rooms_and_enclosed_spaces": "C"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "B",
+        "corridors_exit_access_stairways_and_ramps": "B",
+        "rooms_and_enclosed_spaces": "C"
+      }
+    },
+    "U": {
+      "sprinklered": {
+        "interior_exit_stairways_and_ramps": "No restrictions",
+        "corridors_exit_access_stairways_and_ramps": "No restrictions",
+        "rooms_and_enclosed_spaces": "No restrictions"
+      },
+      "nonsprinklered": {
+        "interior_exit_stairways_and_ramps": "No restrictions",
+        "corridors_exit_access_stairways_and_ramps": "No restrictions",
+        "rooms_and_enclosed_spaces": "No restrictions"
+      }
+    }
+  }
+  

@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>701.2-Multiple-Use</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>803.11-Interior-finish</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7627,9 +7627,632 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Section-701.2---Multiple-use-fire-assemblies">Section 701.2 - Multiple use fire assemblies<a class="anchor-link" href="#Section-701.2---Multiple-use-fire-assemblies">¶</a></h1><h2 id="Building-Code">Building Code<a class="anchor-link" href="#Building-Code">¶</a></h2><p><code>Fire assemblies that serve multiple purposes in a building shall comply with all of the requirements that are applicable for each of the individual fire assemblies.</code></p>
-<p>This section is considered: Understood</p>
-<p>It is understood that fire assemblies that serve multiple purposes in a building are to comply with all of the requirements that are applicable for each of the individual fire assemblies.</p>
+<h1 id="Section-803.11---Interior-finish-requirements-based-on-group">Section 803.11 - Interior finish requirements based on group<a class="anchor-link" href="#Section-803.11---Interior-finish-requirements-based-on-group">¶</a></h1><h2 id="Building-Code">Building Code<a class="anchor-link" href="#Building-Code">¶</a></h2><pre><code>Interior wall and ceiling finish shall have a flame spread index not greater than that specified in Table 803.11 for the group and location designated. Interior wall and ceiling finish materials tested in accordance with NFPA 286 and meeting the acceptance criteria of Section 803.1.2.1, shall be permitted to be used where a Class A classification in accordance with ASTM E84 or UL 723 is required.  
+</code></pre>
+<h3 id="TABLE-803.11-INTERIOR-WALL-AND-CEILING-FINISH-REQUIREMENTS-BY-OCCUPANCYk">TABLE 803.11 INTERIOR WALL AND CEILING FINISH REQUIREMENTS BY OCCUPANCYk<a class="anchor-link" href="#TABLE-803.11-INTERIOR-WALL-AND-CEILING-FINISH-REQUIREMENTS-BY-OCCUPANCYk">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="k">def</span> <span class="nf">create_scrollable_table</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Create a scrollable DataFrame from table data and display it in a Jupyter Notebook.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        table_data (dict): Nested dictionary containing the table data to be displayed.</span>
+<span class="sd">        max_height (int): Maximum height of the scrollable table in pixels. Default is 300.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The DataFrame created from the table data.</span>
+<span class="sd">    """</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Process the nested dictionary to create rows for the DataFrame</span>
+    <span class="k">for</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">areas</span> <span class="ow">in</span> <span class="n">table_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">sprinklered_type</span><span class="p">,</span> <span class="n">area_values</span> <span class="ow">in</span> <span class="n">areas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">area_name</span><span class="p">,</span> <span class="n">finish</span> <span class="ow">in</span> <span class="n">area_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">"Occupancy Group"</span><span class="p">:</span> <span class="n">occupancy_group</span><span class="p">,</span>
+                    <span class="s2">"Sprinkler System"</span><span class="p">:</span> <span class="n">sprinklered_type</span><span class="p">,</span>
+                    <span class="s2">"Area Type"</span><span class="p">:</span> <span class="n">area_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"_"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
+                    <span class="s2">"Finish Requirement"</span><span class="p">:</span> <span class="n">finish</span>
+                <span class="p">})</span>
+
+    <span class="c1"># Create a DataFrame from the rows</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+    <span class="c1"># Display the DataFrame as a scrollable table</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">    &lt;div style="max-height: </span><span class="si">{</span><span class="n">max_height</span><span class="si">}</span><span class="s2">px; overflow-y: scroll;"&gt;</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">    """</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span> 
+<span class="c1"># Load the table from the JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'table_803_11.json'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">table_803_11</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">create_scrollable_table</span><span class="p">(</span><span class="n">table_803_11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div style="max-height: 300px; overflow-y: scroll;">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>Occupancy Group</th>
+<th>Sprinkler System</th>
+<th>Area Type</th>
+<th>Finish Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>A-1 &amp; A-2</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>A-3, A-4, A-5</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>B, E, M, R-1</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>R-4</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>F</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>F</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>F</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>F</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>F</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>F</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>H</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>H</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>H</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>H</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>H</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>H</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-1</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-2</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-3</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>A</td>
+</tr>
+<tr>
+<td>I-4</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>B</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>R-2</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>R-3</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>S</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>S</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>C</td>
+</tr>
+<tr>
+<td>S</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>S</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>S</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>B</td>
+</tr>
+<tr>
+<td>S</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>C</td>
+</tr>
+<tr>
+<td>U</td>
+<td>sprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>No restrictions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>sprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>No restrictions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>sprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>No restrictions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>nonsprinklered</td>
+<td>Interior Exit Stairways And Ramps</td>
+<td>No restrictions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>nonsprinklered</td>
+<td>Corridors Exit Access Stairways And Ramps</td>
+<td>No restrictions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>nonsprinklered</td>
+<td>Rooms And Enclosed Spaces</td>
+<td>No restrictions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
