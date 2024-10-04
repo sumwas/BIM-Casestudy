@@ -7644,19 +7644,7 @@ Exception: For buildings designed as separated occupancies under Section 508.4 a
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> 506.2-Allowable-Area.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10516,27 +10504,7 @@ The allowable area of the building was determined in accordance with Section 506
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">num_unique_occupancies</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
-    <span class="k">if</span> <span class="n">storey_num</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'0'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Applicable"</span>
-<span class="k">else</span><span class="p">:</span> 
-    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10551,39 +10519,7 @@ The allowable area of the building was determined in accordance with Section 506
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\..\SPARQL</span><span class="se">\\</span><span class="s2">spaceAreaSum.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">rdf_graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
-
-<span class="c1"># Prepare data for the table</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Story"</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="s2">"Sum"</span><span class="p">:</span> <span class="p">[]</span>
-<span class="p">}</span>
-
-<span class="c1"># Process SPARQL results</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="n">story</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"levelValue"</span><span class="p">])</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'0'</span><span class="p">)</span>  <span class="c1"># Remove leading zeros</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"totalArea"</span><span class="p">]</span>
-
-    <span class="n">data</span><span class="p">[</span><span class="s2">"Story"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
-    <span class="n">data</span><span class="p">[</span><span class="s2">"Sum"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>

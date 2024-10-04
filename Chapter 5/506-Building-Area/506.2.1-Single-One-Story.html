@@ -7642,142 +7642,15 @@ If = Area factor increase due to frontage(percent) as calculated in accordance w
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="c1"># Add the path to the Rule Notebooks folder to the system path</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">'../..'</span><span class="p">))</span>
-
-<span class="c1"># Import the find_value function from table_lookup.py</span>
-<span class="kn">from</span> <span class="nn">ruleFunctions</span> <span class="kn">import</span> <span class="n">get_building_info</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">SPARQLWrapper</span> <span class="kn">import</span> <span class="n">SPARQLWrapper</span><span class="p">,</span> <span class="n">JSON</span>
-
-<span class="c1"># Define the SPARQL endpoint URL and query file path</span>
-<span class="n">endpoint_url</span> <span class="o">=</span> <span class="s2">"http://localhost:3030/SmartReviewHotel/sparql"</span>
-
-<span class="n">sparql</span> <span class="o">=</span> <span class="n">SPARQLWrapper</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Call the function to get the building information</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">storey_num</span> <span class="o">=</span> <span class="n">get_building_info</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">SPARQLWrapper</span> <span class="kn">import</span> <span class="n">SPARQLWrapper</span><span class="p">,</span> <span class="n">JSON</span>
-
-<span class="c1"># Initialize SPARQL wrapper and set endpoint</span>
-<span class="n">sparql</span> <span class="o">=</span> <span class="n">SPARQLWrapper</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span>
-
-<span class="c1"># Read the SPARQL query from file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\..\SPARQL</span><span class="se">\\</span><span class="s2">uniqueOccupancy.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="c1"># Set the SPARQL query and the return format</span>
-<span class="n">sparql</span><span class="o">.</span><span class="n">setQuery</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
-<span class="n">sparql</span><span class="o">.</span><span class="n">setReturnFormat</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
-
-<span class="c1"># Execute the query and get the results in JSON format</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">sparql</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
-
-<span class="c1"># Process results to get the number of unique occupancies</span>
-<span class="n">story_dict</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="s2">"bindings"</span><span class="p">]:</span>
-    <span class="n">level_value</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"levelValue"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
-    <span class="n">occupancies</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"uniqueOccupancies"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">level_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="p">:</span>
-        <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">occupancies</span><span class="p">)</span>
-
-<span class="c1"># Calculate the number of unique occupancies</span>
-<span class="n">num_unique_occupancies</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">occupancies</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="n">unique_occupancies</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">occupancies</span><span class="p">)</span>  <span class="c1"># Remove duplicates</span>
-    <span class="n">num_unique_occupancies</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">num_unique_occupancies</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_occupancies</span><span class="p">))</span>
-
-<span class="c1">#print(num_unique_occupancies)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">storey_num</span><span class="p">)</span><span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-    <span class="k">if</span> <span class="n">num_unique_occupancies</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Applicable"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-<span class="k">else</span><span class="p">:</span> 
-    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span>
-      <span class="s2">"</span><span class="se">\n\n</span><span class="s2">This section only applies if the building is a single story and a single occupancy. However, this building has:"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">storey_num</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"• One Story"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"• Multiple Stories"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">num_unique_occupancies</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"• One Occupancy"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"• Mixed Occupancies"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>

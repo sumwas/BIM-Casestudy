@@ -7632,19 +7632,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> 504.2-Mixed-Occupancy.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -7661,19 +7649,7 @@ No individual occupancy exceeded the height and number of story limits specified
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> 504.3-Height.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8659,19 +8635,7 @@ The building height of 57.33 ft does not exceed the limit of 70 ft as specified 
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> 504.4-Stories.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11169,63 +11133,9 @@ The building number of stories (4) does not exceed the maximum allowed number of
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">indv_height_result_504_2</span> <span class="o">=</span> <span class="n">indv_height_result</span>
-<span class="n">indv_storey_result_504_2</span> <span class="o">=</span> <span class="n">indv_storey_result</span>
-<span class="n">building_height_result_504_3</span> <span class="o">=</span> <span class="n">building_height_result</span>
-<span class="n">building_storey_result_504_4</span> <span class="o">=</span> <span class="n">story_num_result</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if all results are "Passed"</span>
-<span class="n">all_passed</span> <span class="o">=</span> <span class="s2">"Passed"</span>
-<span class="n">failed_sections</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">if</span> <span class="n">indv_storey_result_504_2</span> <span class="o">!=</span> <span class="s2">"Passed"</span><span class="p">:</span>
-    <span class="n">all_passed</span> <span class="o">=</span> <span class="s2">"Failed"</span>
-    <span class="n">failed_sections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"504.2 - Storey Result"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">indv_height_result_504_2</span> <span class="o">!=</span> <span class="s2">"Passed"</span><span class="p">:</span>
-    <span class="n">all_passed</span> <span class="o">=</span> <span class="s2">"Failed"</span>
-    <span class="n">failed_sections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"504.2 - Height Result"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">building_height_result_504_3</span> <span class="o">!=</span> <span class="s2">"Passed"</span><span class="p">:</span>
-    <span class="n">all_passed</span> <span class="o">=</span> <span class="s2">"Failed"</span>
-    <span class="n">failed_sections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"504.3 - Building Height Result"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">building_storey_result_504_4</span> <span class="o">!=</span> <span class="s2">"Passed"</span><span class="p">:</span>
-    <span class="n">all_passed</span> <span class="o">=</span> <span class="s2">"Failed"</span>
-    <span class="n">failed_sections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"504.4 - Building Storey Result"</span><span class="p">)</span>
-
-<span class="c1"># Print the overall result</span>
-<span class="k">if</span> <span class="n">all_passed</span> <span class="o">==</span> <span class="s2">"Passed"</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: </span><span class="si">{</span><span class="n">all_passed</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: </span><span class="si">{</span><span class="n">all_passed</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Sections that failed:"</span><span class="p">,</span> <span class="n">failed_sections</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">"This section does not have any direct requirements to verify. Please refer to the subsections for analysis results."</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>

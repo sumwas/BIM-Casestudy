@@ -7632,85 +7632,11 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">SPARQLWrapper</span> <span class="kn">import</span> <span class="n">SPARQLWrapper</span><span class="p">,</span> <span class="n">JSON</span>
-
-<span class="c1"># Set up the SPARQL endpoint</span>
-<span class="n">sparql</span> <span class="o">=</span> <span class="n">SPARQLWrapper</span><span class="p">(</span><span class="s2">"http://localhost:3030/SmartReviewHotel/sparql"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Getting Construction Type, Occupancy Group, &amp; Sprinkler Type for the building</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\..\SPARQL\storeyRule.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="n">sparql</span><span class="o">.</span><span class="n">setQuery</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
-<span class="n">sparql</span><span class="o">.</span><span class="n">setReturnFormat</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">sparql</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
-
-<span class="c1"># Process the results</span>
-<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="s2">"bindings"</span><span class="p">]:</span>
-    <span class="n">construction_type</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"constructionType"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
-    <span class="n">occupancy_group</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"occupancyGroup"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
-    <span class="n">sprinkler_type</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"sprinklerType"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"sprinklerType"</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">else</span> <span class="s2">"none"</span>
-    <span class="n">storey_num</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"storeyNumValue"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
-
-    <span class="c1"># Splitting the construction type and subtype</span>
-    <span class="k">if</span> <span class="s2">"-"</span> <span class="ow">in</span> <span class="n">construction_type</span><span class="p">:</span>
-        <span class="n">main_construction_type</span><span class="p">,</span> <span class="n">subtype</span> <span class="o">=</span> <span class="n">construction_type</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">main_construction_type</span> <span class="o">=</span> <span class="n">construction_type</span>
-        <span class="n">subtype</span> <span class="o">=</span> <span class="s2">""</span>
-
-    <span class="c1"># Determine the sprinkler system type</span>
-    <span class="n">sprinkler_system</span> <span class="o">=</span> <span class="s2">"S"</span> <span class="k">if</span> <span class="n">sprinkler_type</span> <span class="o">!=</span> <span class="s2">"none"</span> <span class="k">else</span> <span class="s2">"NS"</span>
-
-    <span class="c1">#print(main_construction_type, subtype, occupancy_group, sprinkler_system)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">building_frontage</span> <span class="o">=</span> <span class="mf">950.58</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: Passed"</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">The allowable floor area of the building was determined based on:</span><span class="se">\n</span><span class="s2">"</span> \
-                             <span class="sa">f</span><span class="s2">"• the type of construction: </span><span class="si">{</span><span class="n">construction_type</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
-                             <span class="sa">f</span><span class="s2">"• the occupancy classification: </span><span class="si">{</span><span class="n">occupancy_group</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
-                             <span class="sa">f</span><span class="s2">"• the availability of a sprinkler system installed throughout the building: </span><span class="si">{</span><span class="n">sprinkler_type</span><span class="si">}</span><span class="s2">,</span><span class="se">\n</span><span class="s2">"</span> \
-                             <span class="sa">f</span><span class="s2">"• the amount of building frontage on public way or open space: </span><span class="si">{</span><span class="n">building_frontage</span><span class="si">}</span><span class="s2"> ft."</span>
-                             <span class="sa">f</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">Please refer to the subsections for further analysis results."</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -7745,46 +7671,7 @@ Please refer to the subsections for further analysis results.
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Table 506.2 Display</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-
-<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">occupancy_group</span><span class="p">,</span> <span class="n">systems</span> <span class="ow">in</span> <span class="n">table_506_2</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">sprinkler_system</span><span class="p">,</span> <span class="n">types</span> <span class="ow">in</span> <span class="n">systems</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">construction_type</span><span class="p">,</span> <span class="n">subtypes</span> <span class="ow">in</span> <span class="n">types</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">subtype</span><span class="p">,</span> <span class="n">area_limit</span> <span class="ow">in</span> <span class="n">subtypes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                    <span class="s2">"Occupancy Group"</span><span class="p">:</span> <span class="n">occupancy_group</span><span class="p">,</span>
-                    <span class="s2">"Sprinkler System"</span><span class="p">:</span> <span class="n">sprinkler_system</span><span class="p">,</span>
-                    <span class="s2">"Construction Type"</span><span class="p">:</span> <span class="n">construction_type</span><span class="p">,</span>
-                    <span class="s2">"Subtype"</span><span class="p">:</span> <span class="n">subtype</span><span class="p">,</span>
-                    <span class="s2">"Area Limit"</span><span class="p">:</span> <span class="n">area_limit</span>
-                <span class="p">})</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-
-<span class="c1"># Display the DataFrame as a scrollable table</span>
-<span class="k">def</span> <span class="nf">render_scrollable_table</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">max_height</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
-<span class="s2">    &lt;div style="max-height: </span><span class="si">{</span><span class="n">max_height</span><span class="si">}</span><span class="s2">px; overflow-y: scroll;"&gt;</span>
-<span class="s2">        </span><span class="si">{</span><span class="n">dataframe</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="si">}</span>
-<span class="s2">    &lt;/div&gt;</span>
-<span class="s2">    """</span><span class="p">))</span>
-
-<span class="n">render_scrollable_table</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10646,45 +10533,7 @@ h. New Group R occupancies are required to be protected by an automatic sprinkle
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\SPARQL</span><span class="se">\\</span><span class="s2">uniqueOccupancy.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This section is considered: Passed"</span>
-<span class="sa">f</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">The allowable area of the building was determined in accordance with Section 506.2.4 as there is more than one occupancy in the multi-story building: </span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">rdf_graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
-
-<span class="c1"># Process and format the results</span>
-<span class="n">story_dict</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="n">level_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">occupancies</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">level_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="p">:</span>
-        <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    
-    <span class="n">story_dict</span><span class="p">[</span><span class="n">level_value</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">occupancies</span><span class="p">)</span>
-
-<span class="c1"># Print the results in the desired format</span>
-<span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">occupancies</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">story_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-    <span class="n">unique_occupancies</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">occupancies</span><span class="p">))</span>  <span class="c1"># Remove duplicates and sort for better display</span>
-    <span class="n">num_unique_occupancies</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_occupancies</span><span class="p">)</span>  <span class="c1"># Count the number of unique occupancies</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"•Story: </span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">occupancy</span> <span class="ow">in</span> <span class="n">unique_occupancies</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"◾Occupancy: </span><span class="si">{</span><span class="n">occupancy</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10738,44 +10587,9 @@ If = Area factor increase due to frontage(percent) as calculated in accordance w
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">storey_num</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'0'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-    <span class="k">if</span> <span class="n">num_unique_occupancies</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Applicable"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-<span class="k">else</span><span class="p">:</span> 
-    <span class="n">result</span> <span class="o">=</span> <span class="s2">"Not Applicable"</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">rdflib</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="c1"># Load RDF graph</span>
-<span class="n">rdf_graph</span> <span class="o">=</span> <span class="n">rdflib</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="n">rdf_graph</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">"..\..\LBD files\smartReview\outputHotel Compliant Revit 2023 Advanced with Spaces.ifc.ttl"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"ttl"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10789,39 +10603,7 @@ If = Area factor increase due to frontage(percent) as calculated in accordance w
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"..\..\SPARQL</span><span class="se">\\</span><span class="s2">spaceAreaSum.sparql"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">sparql_query</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">rdf_graph</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sparql_query</span><span class="p">)</span>
-
-<span class="c1"># Prepare data for the table</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Story"</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="s2">"Sum"</span><span class="p">:</span> <span class="p">[]</span>
-<span class="p">}</span>
-
-<span class="c1"># Process SPARQL results</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-    <span class="n">story</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"levelValue"</span><span class="p">])</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'0'</span><span class="p">)</span>  <span class="c1"># Remove leading zeros</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"totalArea"</span><span class="p">]</span>
-
-    <span class="n">data</span><span class="p">[</span><span class="s2">"Story"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
-    <span class="n">data</span><span class="p">[</span><span class="s2">"Sum"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Code cells are hidden -->
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
