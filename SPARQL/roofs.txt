@@ -4,11 +4,12 @@ PREFIX props: <http://lbd.arch.rwth-aachen.de/props#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?roof ?id ?type
+SELECT ?roof ?id ?baseLevel ?type
 (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
 WHERE {
   ?roof a building:Roof ;
         props:batid_attribute_simple ?id ;
+        props:baseLevel_property_simple ?baseLevel ;
         props:familyAndType_property_simple ?type ;
         props:area_property_simple ?area .
 }

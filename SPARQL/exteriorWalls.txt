@@ -30,8 +30,8 @@ WHERE {
               rdfs:label ?baseConstraint ;
               props:elevation_property_simple ?baseElevation .
   
-  BIND(STRAFTER(STR(?topConstraint), ": ") AS ?topConstraintLabel)
+  BIND(STRAFTER(STR(?topConstraint), ": ") AS ?tempTopConstraintLabel)
   ?topStorey a bot:Storey ;
-             rdfs:label ?topConstraintLabel ;
+             rdfs:label ?tempTopConstraintLabel ;
              props:elevation_property_simple ?topElevation .
 }

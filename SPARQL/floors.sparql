@@ -9,6 +9,7 @@ SELECT ?floor ?id ?type
 (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
 WHERE {
   ?floor a building:Slab-FLOOR ;
+        props:category_property_simple "Floors";
         props:batid_attribute_simple ?id ;
         props:familyAndType_property_simple ?type ;
         props:level_property_simple ?level ;
@@ -18,3 +19,4 @@ WHERE {
               rdfs:label ?level ;
               props:elevation_property_simple ?height .
 }
+ORDER BY ?height

@@ -5,23 +5,27 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?door ?id
-(STRBEFORE(STR(?level), "-") AS ?levelValue) ?mark ?fireRating (STRBEFORE(STR(?height), "^^") AS ?heightValue) 
+(STRBEFORE(STR(?level), "-") AS ?levelValue) ?mark ?fireRating 
+(STR(ROUND(xsd:decimal(STRBEFORE(STR(?height), "^^")) * 100) / 100) AS ?heightValue)
 ?egressType
-(STRBEFORE(STR(?width), "^^") AS ?widthValue) 
-(STRBEFORE(STR(?area), "^^") AS ?areaValue) 
-(STRBEFORE(STR(?baseElevation), "^^") AS ?baseElevationValue)
+(STR(ROUND(xsd:decimal(STRBEFORE(STR(?width), "^^")) * 100) / 100) AS ?widthValue)
+(STR(ROUND(xsd:decimal(STRBEFORE(STR(?area), "^^")) * 100) / 100) AS ?areaValue)
+(STR(ROUND(xsd:decimal(STRBEFORE(STR(?baseElevation), "^^")) * 100) / 100) AS ?baseElevationValue)
 WHERE {
   ?door a building:Door ;
-        props:batid_attribute_simple ?id ;
-        props:level_property_simple ?level ;
-        props:mark_property_simple ?mark ;
-        props:fireRating_property_simple ?fireRating ;
-        props:overallHeightIfcDoor_attribute_simple ?height ;
-        props:overallWidthIfcDoor_attribute_simple ?width ;
-        props:area_property_simple ?area .
+        props:level_property_simple ?level .
+  OPTIONAL { ?door props:batid_attribute_simple ?id }
+  OPTIONAL { ?door props:mark_property_simple ?mark }
+  OPTIONAL { ?door props:fireRating_property_simple ?fireRating }
+  OPTIONAL { ?door props:overallHeightIfcDoor_attribute_simple ?height }
+  OPTIONAL { ?door props:overallWidthIfcDoor_attribute_simple ?width }
+  OPTIONAL { ?door props:area_property_simple ?area }
   OPTIONAL { ?door props:smrvDoorEgressType_property_simple ?egressType }
 
-  ?baseStorey a bot:Storey ;
-              rdfs:label ?level ;
-              props:elevation_property_simple ?baseElevation .
+  OPTIONAL {
+    ?baseStorey a bot:Storey ;
+                rdfs:label ?level ;
+                props:elevation_property_simple ?baseElevation .
+  }
 }
+ORDER BY ?mark

@@ -2,9 +2,11 @@ PREFIX bot: <https://w3id.org/bot#>
 PREFIX props: <http://lbd.arch.rwth-aachen.de/props#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX building: <https://pi.pauwel.be/voc/buildingelement#>
 
 SELECT ?space (STRBEFORE(STR(?level), "-") AS ?levelValue) ?name ?occupancyClassification ?id
        (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
+       (STRBEFORE(STR(?storeyArea), "^^") AS ?storeyAreaValue) 
        (STRBEFORE(STR(?storeyHeight), "^^") AS ?storeyHeightValue)
 WHERE {
   ?space a bot:Space ;
@@ -19,4 +21,12 @@ WHERE {
   ?storey a bot:Storey ;
           rdfs:label ?level ;
           props:elevation_property_simple ?storeyHeight .
+
+  # Fetch the area of the storey
+  ?floor a building:Slab-FLOOR ;
+        props:familyAndType_property_simple "Floor: SMRV Generic - 12  1 hour" ;
+        props:level_property_simple ?level ;
+        props:area_property_simple ?storeyArea .     
 }
+
+ORDER BY ?levelValue

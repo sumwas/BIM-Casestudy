@@ -6,7 +6,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?wall (STRBEFORE(STR(?baseConstraint), "-") AS ?baseConstraintValue)
       (STRAFTER(STR(?topConstraint), ": ") AS ?topConstraintLabel)
-      (STRBEFORE(STRAFTER(STR(?topConstraint), ": "), "-") AS ?topConstraintValue) ?batid ?fireRating ?facingDirection
+      (STRBEFORE(STRAFTER(STR(?topConstraint), ": "), "-") AS ?topConstraintValue) ?batid ?fireRating
       (STRBEFORE(STR(?unconnectedHeight), "^^") AS ?unconnectedHeightValue)
       (STRBEFORE(STR(?length), "^^") AS ?lengthValue) 
       (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
@@ -14,12 +14,11 @@ SELECT ?wall (STRBEFORE(STR(?baseConstraint), "-") AS ?baseConstraintValue)
       (STRBEFORE(STR(?topElevation), "^^") AS ?topElevationValue)
 WHERE {
   ?wall a building:Wall ;
-        props:function_property_simple "Exterior" ;
+        props:function_property_simple "Interior" ;
         props:baseConstraint_property_simple ?baseConstraint ;
         props:topConstraint_property_simple ?topConstraint ;
         props:batid_attribute_simple ?batid ;
         props:fireRating_property_simple ?fireRating ;
-        props:smrvFacingDirection_property_simple ?facingDirection ;
         props:unconnectedHeight_property_simple ?unconnectedHeight ;
         props:length_property_simple ?length ;
         props:area_property_simple ?area .
@@ -28,8 +27,8 @@ WHERE {
               rdfs:label ?baseConstraint ;
               props:elevation_property_simple ?baseElevation .
   
-  BIND(STRAFTER(STR(?topConstraint), ": ") AS ?topConstraintLabel)
+  BIND(STRAFTER(STR(?topConstraint), ": ") AS ?tempTopConstraintLabel)
   ?topStorey a bot:Storey ;
-             rdfs:label ?topConstraintLabel ;
+             rdfs:label ?tempTopConstraintLabel ;
              props:elevation_property_simple ?topElevation .
 }
