@@ -1,13 +1,19 @@
-PREFIX building: <http://example.org/building#>
+PREFIX building: <https://pi.pauwel.be/voc/buildingelement#>
+PREFIX bot: <https://w3id.org/bot#>
 PREFIX props: <http://lbd.arch.rwth-aachen.de/props#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?wall ?batid ?fireRating ?fireSeparationDistance
+SELECT  
+       ?batid 
+       ?fireRating 
+       (STRBEFORE(STR(?smrvExteriorFireSeparationDistance), "^^") AS ?smrvExteriorFireSeparationDistanceValue) 
 WHERE {
-    ?wall a building:Wall ;
-          props:loadBearing_property_simple "false"^^xsd:boolean ;
-          props:function_property_simple "Exterior" ;
-          props:fireRating_property_simple ?fireRating ;
-          props:batid_attribute_simple ?batid ;
-          props:smrvExteriorFireSeparationDistance_property_simple ?fireSeparationDistance .
+  ?wall a building:Wall ;
+        props:function_property_simple "Exterior" ;
+        props:structuralUsage_property_simple "Non-bearing" ; 
+        props:batid_attribute_simple ?batid ;
+        props:fireRating_property_simple ?fireRating ;
+        props:smrvExteriorFireSeparationDistance_property_simple ?smrvExteriorFireSeparationDistance .
+  
 }

@@ -4,15 +4,24 @@ PREFIX props: <http://lbd.arch.rwth-aachen.de/props#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?wall (STRBEFORE(STR(?baseConstraint), "-") AS ?baseConstraintValue)
-      (STRAFTER(STR(?topConstraint), ": ") AS ?topConstraintLabel)
-      (STRBEFORE(STRAFTER(STR(?topConstraint), ": "), "-") AS ?topConstraintValue) ?batid ?fireRating ?facingDirection
-      (STRBEFORE(STR(?smrvExteriorFireSeparationDistance), "^^") AS ?smrvExteriorFireSeparationDistanceValue) 
-      (STRBEFORE(STR(?unconnectedHeight), "^^") AS ?unconnectedHeightValue)
-      (STRBEFORE(STR(?length), "^^") AS ?lengthValue) 
-      (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
-      (STRBEFORE(STR(?baseElevation), "^^") AS ?baseElevationValue)
-      (STRBEFORE(STR(?topElevation), "^^") AS ?topElevationValue)
+SELECT ?wall 
+       (STRBEFORE(STR(?baseConstraint), "-") AS ?baseConstraintValue)
+       (STRAFTER(STR(?topConstraint), ": ") AS ?topConstraintLabel)
+       (STRBEFORE(STRAFTER(STR(?topConstraint), ": "), "-") AS ?topConstraintValue)
+       ?batid 
+       ?fireRating 
+       ?facingDirection
+       (STRBEFORE(STR(?smrvExteriorFireSeparationDistance), "^^") AS ?smrvExteriorFireSeparationDistanceValue) 
+       (STRBEFORE(STR(?unconnectedHeight), "^^") AS ?unconnectedHeightValue)
+       (STRBEFORE(STR(?length), "^^") AS ?lengthValue) 
+       (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
+       (STRBEFORE(STR(?baseElevation), "^^") AS ?baseElevationValue)
+       (STRBEFORE(STR(?topElevation), "^^") AS ?topElevationValue)
+       ?subElement 
+       (STRBEFORE(STR(?widthWindow), "^^") AS ?widthWindowValue) 
+       (STRBEFORE(STR(?heightWindow), "^^") AS ?heightWindowValue) 
+       (STRBEFORE(STR(?widthDoor), "^^") AS ?widthDoorValue) 
+       (STRBEFORE(STR(?heightDoor), "^^") AS ?heightDoorValue) 
 WHERE {
   ?wall a building:Wall ;
         props:function_property_simple "Exterior" ;
@@ -25,6 +34,18 @@ WHERE {
         props:unconnectedHeight_property_simple ?unconnectedHeight ;
         props:length_property_simple ?length ;
         props:area_property_simple ?area .
+  
+  OPTIONAL {
+    ?wall bot:hasSubElement ?subElement .
+    OPTIONAL {
+    	?subElement props:overallWidthIfcWindow_attribute_simple ?widthWindow ;
+                props:overallHeightIfcWindow_attribute_simple ?heightWindow .
+    }
+    OPTIONAL {
+      ?subElement props:overallWidthIfcDoor_attribute_simple ?widthDoor ;
+                props:overallHeightIfcDoor_attribute_simple ?heightDoor .
+    }
+  }
 
   ?baseStorey a bot:Storey ;
               rdfs:label ?baseConstraint ;
