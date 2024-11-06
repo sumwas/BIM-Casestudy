@@ -3,51 +3,135 @@
     {
       "range": "< 5",
       "TYPE_OF_CONSTRUCTION": "All",
-      "OCCUPANCY_GROUP_H": 3,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 2,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+      "occupancies": {
+        "H": 3,
+        "F-1": 2,
+        "M": 2,
+        "S-1": 2,
+        "A": 1,
+        "B": 1,
+        "E": 1,
+        "F-2": 1,
+        "I": 1,
+        "R": 1,
+        "R-1": 1,
+        "S-2": 1,
+        "U": 1
+      }
     },
     {
       "range": "5 <= X < 10",
       "TYPE_OF_CONSTRUCTION": "IA",
-      "OCCUPANCY_GROUP_H": 3,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 2,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+      "occupancies": {
+        "H": 3,
+        "F-1": 2,
+        "M": 2,
+        "S-1": 2,
+        "A": 1,
+        "B": 1,
+        "E": 1,
+        "F-2": 1,
+        "I": 1,
+        "R": 1,
+        "R-1": 1,
+        "S-2": 1,
+        "U": 1
+      }
     },
     {
       "range": "5 <= X < 10",
       "TYPE_OF_CONSTRUCTION": "Others",
-      "OCCUPANCY_GROUP_H": 2,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+      "occupancies": {
+        "H": 2,
+        "F-1": 1,
+        "M": 1,
+        "S-1": 1,
+        "A": 1,
+        "B": 1,
+        "E": 1,
+        "F-2": 1,
+        "I": 1,
+        "R": 1,
+        "R-1": 1,
+        "S-2": 1,
+        "U": 1
+      }
     },
     {
       "range": "10 <= X < 30",
       "TYPE_OF_CONSTRUCTION": "IA, IB",
-      "OCCUPANCY_GROUP_H": 2,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+      "occupancies": {
+        "H": 2,
+        "F-1": 1,
+        "M": 1,
+        "S-1": 1,
+        "A": 1,
+        "B": 1,
+        "E": 1,
+        "F-2": 1,
+        "I": 1,
+        "R": 1,
+        "R-1": 1,
+        "S-2": 1,
+        "U": 1
+      }
     },
     {
       "range": "10 <= X < 30",
       "TYPE_OF_CONSTRUCTION": "IIB, VB",
-      "OCCUPANCY_GROUP_H": 1,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 0,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 0
+      "occupancies": {
+        "H": 1,
+        "F-1": 0,
+        "M": 0,
+        "S-1": 0,
+        "A": 0,
+        "B": 0,
+        "E": 0,
+        "F-2": 0,
+        "I": 0,
+        "R": 0,
+        "R-1": 0,
+        "S-2": 0,
+        "U": 0
+      }
     },
     {
       "range": "10 <= X < 30",
       "TYPE_OF_CONSTRUCTION": "Others",
-      "OCCUPANCY_GROUP_H": 1,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 1,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 1
+      "occupancies": {
+        "H": 1,
+        "F-1": 1,
+        "M": 1,
+        "S-1": 1,
+        "A": 1,
+        "B": 1,
+        "E": 1,
+        "F-2": 1,
+        "I": 1,
+        "R": 1,
+        "R-1": 1,
+        "S-2": 1,
+        "U": 1
+      }
     },
     {
       "range": "<= 30",
       "TYPE_OF_CONSTRUCTION": "All",
-      "OCCUPANCY_GROUP_H": 0,
-      "OCCUPANCY_GROUP_F-1_M_S-1": 0,
-      "OCCUPANCY_GROUP_A_B_E_F-2_I_R_S-2_U": 0
+      "occupancies": {
+        "H": 0,
+        "F-1": 0,
+        "M": 0,
+        "S-1": 0,
+        "A": 0,
+        "B": 0,
+        "E": 0,
+        "F-2": 0,
+        "I": 0,
+        "R": 0,
+        "R-1": 0,
+        "S-2": 0,
+        "U": 0
+      }
     }
   ]
 }

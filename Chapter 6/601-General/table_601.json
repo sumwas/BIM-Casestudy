@@ -1,0 +1,75 @@
+{
+    "BUILDING_ELEMENTS": [
+      {
+        "building_element": "Primary structural frame",
+        "values": {
+          "Type I": {"A": "3", "B": "2"},
+          "Type II": {"A": "1", "B": "0"},
+          "Type III": {"A": "1", "B": "0"},
+          "Type IV": {"HT": "HT"},
+          "Type V": {"A": "1", "B": "0"}
+        }
+      },
+      {
+        "building_element": "Exterior Bearing Walls",
+        "values": {
+          "Type I": {"A": "3", "B": "2"},
+          "Type II": {"A": "1", "B": "0"},
+          "Type III": {"A": "2", "B": "2"},
+          "Type IV": {"HT": "2"},
+          "Type V": {"A": "1", "B": "0"}
+        }
+      },
+      {
+        "building_element": "Interior Bearing Walls",
+        "values": {
+          "Type I": {"A": "3a", "B": "2a"},
+          "Type II": {"A": "1", "B": "0"},
+          "Type III": {"A": "1", "B": "0"},
+          "Type IV": {"HT": "1/HT"},
+          "Type V": {"A": "1", "B": "0"}
+        }
+      },
+      {
+        "building_element": "Exterior Non-Bearing Walls",
+        "values": {
+          "Type I": {"A": "See Table 602", "B": "See Table 602"},
+          "Type II": {"A": "See Table 602", "B": "See Table 602"},
+          "Type III": {"A": "See Table 602", "B": "See Table 602"},
+          "Type IV": {"HT": "See Table 602"},
+          "Type V": {"A": "See Table 602", "B": "See Table 602"}
+        }
+      },
+      {
+        "building_element": "Interior Non-Bearing Walls",
+        "values": {
+          "Type I": {"A": "0", "B": "0"},
+          "Type II": {"A": "0", "B": "0"},
+          "Type III": {"A": "0", "B": "0"},
+          "Type IV": {"HT": "See Section 602.4.6"},
+          "Type V": {"A": "0", "B": "0"}
+        }
+      },
+      {
+        "building_element": "Floor",
+        "values": {
+          "Type I": {"A": "2", "B": "2"},
+          "Type II": {"A": "1", "B": "0"},
+          "Type III": {"A": "1", "B": "0"},
+          "Type IV": {"HT": "HT"},
+          "Type V": {"A": "1", "B": "0"}
+        }
+      },
+      {
+        "building_element": "Roof",
+        "values": {
+          "Type I": {"A": "1 1/2", "B": "1"},
+          "Type II": {"A": "1", "B": "0"},
+          "Type III": {"A": "1", "B": "0"},
+          "Type IV": {"HT": "HT"},
+          "Type V": {"A": "1", "B": "0"}
+        }
+      }
+    ]
+  }
+  
