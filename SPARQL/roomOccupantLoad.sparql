@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX building: <https://pi.pauwel.be/voc/buildingelement#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX props: <http://lbd.arch.rwth-aachen.de/props#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT  
+       ?label 
+       ?name 
+	   ?function 
+	   ?level
+       (STRBEFORE(STR(?area), "^^") AS ?areaValue) 
+WHERE {
+  ?space a bot:Space ;
+        props:category_property_simple "Rooms" ;
+        props:functionOfSpace_property_simple ?function ;
+        rdfs:label ?label ;
+        props:name_property_simple ?name ;
+        props:level_property_simple ?level ;
+        props:area_property_simple ?area.
+  
+}                 
